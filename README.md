@@ -1,6 +1,6 @@
-# Вёрстка оффлайн библиотеки ([tululu.org](http://tululu.org/))
+# Вёрстка библиотеки ([tululu.org](http://tululu.org/))
 
-С помощью этого кода вы сможете легко сверстать свою [оффлайн библиотеку](https://maratdzhukaev09.github.io/verstka_library_devman/pages/index1.html) из [результатов парсинга](https://github.com/maratdzhukaev09/parse_devman) с сайта [tululu.org](http://tululu.org/).
+С помощью этого кода вы сможете легко сверстать свою [библиотеку](https://maratdzhukaev09.github.io/verstka_library_devman/pages/index1.html) из [результатов парсинга](https://github.com/maratdzhukaev09/parse_devman) с сайта [tululu.org](http://tululu.org/).
 Пример библиотеки вы можете посмотреть [здесь](https://maratdzhukaev09.github.io/verstka_library_devman/pages/index1.html).
 
 ## Запуск кода
