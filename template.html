@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{ '../static/bootstrap.min.css'|urlencode }}" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+  </head>
+  <body>
+    <div class="container">
+      <nav aria-label="...">
+        <ul class="pagination">
+          {% if current_page_number - 1 == 0 %}
+          <li class="page-item disabled">
+            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Назад</a>
+          </li>
+          {% else %}
+          <li class="page-item">
+            <a class="page-link" href="{{ ('index' + (current_page_number - 1)|string() + '.html')|urlencode }}">Назад</a>
+          </li>
+          {% endif %}
+          {% for page_number in range(pages_amount) %}
+          {% if page_number + 1 == current_page_number %}
+          <li class="page-item active" aria-current="page">
+            <a class="page-link" href="{{ ('index' + (page_number + 1)|string() + '.html')|urlencode }}">{{ (page_number + 1)|string() }}<span class="sr-only">(current)</span></a>
+          </li>
+          {% else %}
+          <li class="page-item"><a class="page-link" href="{{ ('index' + (page_number + 1)|string() + '.html')|urlencode }}">{{ (page_number + 1)|string() }}</a></li>
+          {% endif %}
+          {% endfor %}
+          {% if current_page_number + 1 > pages_amount %}
+          <li class="page-item disabled">
+            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Вперёд</a>
+          </li>
+          {% else %}
+          <li class="page-item">
+            <a class="page-link" href="{{ ('index' + (current_page_number + 1)|string() + '.html')|urlencode }}">Вперёд</a>
+          </li>
+          {% endif %}
+        </ul>
+      </nav>
+      <div class="row">
+        {% for two_books in books %}
+        {% for book in two_books %}
+        <div class="col">
+          <div class="card mb-3" style="max-width: 540px;">
+            <div class="row no-gutters">
+              <div class="col-md-4">
+                <img src="{{ ('../static/' + book['image_src'])|urlencode }}" class="card-img" alt="{{ book['title'] }} {{ book['author'] }}">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">{{ book['title'] }}</h5>
+                  <p class="card-text">{{ book['author'] }}</p>
+                  {% for genre in book['genres'] %}
+                  <span class="badge badge-light">{{ genre }}</span>
+                  {% endfor %}
+                  <a href="{{ ('../static/' + book['book_path'])|urlencode }}" target="_blank" rel="noopener noreferrer">
+                    <p class="card-text"><small class="text-muted">Читать</small></p>
+                  </a>
+                </div>
+              </div>
+            </div>
+           </div>
+        </div>
+        {% endfor %}
+        <div class="w-100"></div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="{{ '../static/jquery-3.3.1.slim.min.js'|urlencode }}" crossorigin="anonymous"></script>
+    <script src="{{ '../static/popper.min.js'|urlencode }}" crossorigin="anonymous"></script>
+    <script src="{{ '../static/bootstrap.min.js'|urlencode }}" crossorigin="anonymous"></script>
+  </body>
+</html>
