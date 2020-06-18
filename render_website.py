@@ -15,6 +15,7 @@ def rebuild():
     os.makedirs("pages", exist_ok=True)
     books_groups = list(chunked(all_books, 100))
 
+    pages_filenames = []
     for number, books_group in enumerate(books_groups):
         bisected_books_groups = list(chunked(books_group, 2))
 
@@ -22,9 +23,15 @@ def rebuild():
                                         current_page_number=number + 1,
                                         pages_amount=len(books_groups))
 
-        with open(os.path.join("pages", f'index{number + 1}.html'), 'w', encoding="utf8") as file:
+        filename = f'index{number + 1}.html'
+        with open(os.path.join("pages", filename), 'w', encoding="utf8") as file:
             file.write(rendered_page)
+        pages_filenames.append(filename)
     print("Site rebuilded")
+
+    for filename in os.listdir("pages"):
+        if filename not in pages_filenames:
+            os.remove(os.path.join("pages", filename))
 
 rebuild()
 
