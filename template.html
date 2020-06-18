@@ -60,7 +60,7 @@
                       {% for genre in book['genres'] %}
                         <span class="badge badge-light">{{ genre }}</span>
                       {% endfor %}
-                      <p class="card-text">
+                      <p class="card-text mt-3">
                         <a href="{{ ('../static/' + book['book_path'])|urlencode }}" target="_blank" rel="noopener noreferrer" class="stretched-link">Читать</a>
                       </p>
                     </div>
